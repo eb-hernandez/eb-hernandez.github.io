@@ -1,14 +1,23 @@
 /* General Styles */
-:root{
-    --font-head: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --font-body: "Work Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
+--font-head: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+--font-body: "Work Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
 /* Apply families */
 html, main, body { font-family: var(--font-body); }
 header, contacts, project, project h3, project a, header h1, h2, h3, .brand { font-family: var(--font-head); }
 header nav, header nav a, header nav ul, section, section h2 { font-family: var(--font-head); }
 section p, project p, contact ul, contact a, footer { font-family: var(--font-head); }
+
+.avatar img {
+    width: 128px;
+    height: 168px;
+    border-radius: 14px;            /* circle; change to 14px & adjust size for oblong */
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid #263041;
+    box-shadow: 0 1px 0 rgba(0,0,0,.25);
+    background: #0c1117;
+}
 
 * {box-sizing: border-box;}
 
@@ -23,17 +32,6 @@ html, body {
 }
 
 html { scroll-behavior: smooth; }
-
-avatar img {
-    width: 128px;
-    height: 168px;
-    border-radius: 14px;            /* circle; change to 14px & adjust size for oblong */
-    object-fit: cover;
-    object-position: center;
-    border: 1px solid #263041;
-    box-shadow: 0 1px 0 rgba(0,0,0,.25);
-    background: #0c1117;
-}
 
 main { padding: 26px 26px 48px; }
 
