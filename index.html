@@ -8,16 +8,8 @@
   <meta name="description" content="Professional site for Ernest B. Hernandez. Centralizes my academic journey at St. Philip's College and my trajectory toward Information Security Architecture." />
   <meta name="author" content="Ernest B. Hernandez" />
 
-  <!-- Open Graph / Twitter (optional) -->
-  <meta property="og:title" content="Ernest B. Hernandez — Main Page" />
-  <meta property="og:description" content="BAT, Cybersecurity • St. Philip's College • Class of 2027. Aspiring Information Security Architect." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://eb-hernandez.github.io/" />
-  <meta property="og:image" content="https://eb-hernandez.github.io/assets/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-
   <!-- Optional favicon -->
-  <link rel="icon" href="/assets/favicon.ico">
+  <link rel="icon" href="/assets/favicon.ico" />
 
   <style>
     :root{
@@ -30,11 +22,10 @@
       --brand:#4f7cff;
       --brand-soft: rgba(79,124,255,.12);
       --border:#263041;
-      --shadow: 0 0 0 1px var(--border);
 
       /* LAYOUT SCALES */
       --sidebar-w: 240px;        /* sidebar width */
-      --container-max: 1024px;   /* content max width */
+      --container-max: 1100px;   /* content max width */
       --main-min: 660px;         /* min width for main column on desktop */
       --radius: 10px;
       --pad: 14px;
@@ -46,6 +37,7 @@
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
       -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
     }
+    html { scroll-behavior: smooth; }
     a { color: var(--brand); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
@@ -67,13 +59,14 @@
       border-radius: 999px; color:var(--muted); background: #0c1117; font-size: 12px;
     }
     .sidebar-note { color: var(--muted); margin: 14px 0 18px; line-height: 1.5; }
-    .side-links { margin: 14px 0 0 0; padding: 0; list-style:none; }
+    .side-links { margin: 14px 0 0 0; padding: 0; list-style:none; line-height: 1.35; }
     .side-links li { margin: 8px 0; }
     .nav-link {
       display:flex; align-items:center; gap:8px;
       color: var(--text); padding: 8px 10px; border-radius: 8px; border: 1px solid transparent;
     }
-    .nav-link:hover { background: var(--brand-soft); border-color: var(--border); text-decoration:none; }
+    .nav-link:hover, .nav-link:focus-visible { background: var(--brand-soft); text-decoration:none; }
+    .nav-link.active { background: rgba(79,124,255,.16); color: var(--text); }
 
     main { padding: 26px 26px 48px; }
     .container { width: min(var(--container-max), 94%); margin: 0 auto; }
@@ -88,14 +81,14 @@
     }
 
     /* ===== SECTIONS / PANELS ===== */
-    section { padding: 24px 0; }
+    section { padding: 20px 0; }
     .section-title { margin: 0 0 12px; font-size: 19px; }
     .panel {
       background: var(--panel);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(38,48,65,.7);
       border-radius: var(--radius);
       padding: var(--pad);
-      box-shadow: var(--shadow);
+      box-shadow: none;
     }
 
     /* About grid */
@@ -103,7 +96,7 @@
     .bullets { margin: 10px 0 0 0; color: var(--muted); }
     .bullets li { margin: 6px 0; }
 
-    /* Quick navigation */
+    /* Quick navigation (stable buttons) */
     .quick-nav {
       display: grid;
       grid-template-columns: repeat(2, minmax(220px, 1fr));
@@ -112,12 +105,14 @@
     }
     .qbtn {
       display:flex; align-items:center; justify-content:center; gap:10px;
+      min-height: 48px;
       padding: 12px 14px; border-radius: var(--radius); border:1px solid var(--border);
       background: rgba(255,255,255,0.02); color: var(--text); font-weight: 700;
       transition: transform .12s ease, border-color .12s ease, background .12s ease;
     }
-    .qbtn span { font-weight: 500; color: var(--muted); font-size: 13px; }
     .qbtn:hover { transform: translateY(-1px); border-color: var(--brand); background: var(--brand-soft); text-decoration:none; }
+    .qbtn:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+    .qbtn .sub { font-weight: 500; color: var(--muted); font-size: 13px; }
 
     /* CTA buttons */
     .cta { margin-top: 10px; display:flex; flex-wrap:wrap; gap: 8px; }
@@ -134,7 +129,8 @@
     footer1 { border-top: 1px solid var(--border); color: var(--muted); text-align:right; padding: 16px 0 36px; font-size: 13px; }
     
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 860px) {
+    
+@media (max-width: 860px) {
       .wrap { grid-template-columns: 1fr; }
       aside {
         position: static; height: auto; padding: 14px 16px;
@@ -147,9 +143,6 @@
     @media (max-width: 520px) {
       .hero h1 { font-size: 22px; }
     }
-
-    /* Active state for sidebar links (used by tiny JS below) */
-    .nav-link.active { background: var(--brand-soft); border-color: var(--border); color: var(--text); }
   </style>
 </head>
 <body>
@@ -157,18 +150,17 @@
     <!-- ========== LEFT SIDEBAR ========== -->
     <aside>
       <div class="brand">Ernest B. Hernandez</div>
-      <span class="tag">BAT Candidate • Class of 2027</span>
-
+     
       <p class="sidebar-note">
         Cybersecurity sophomore at <strong>St. Philip's College</strong>.<br />
         Focused on secure-by-design engineering and defensive architecture.
       </p>
 
       <ul class="side-links">
-        <li><a class="nav-link" href="#home">🏡 Home</a></li>
-        <li><a class="nav-link" href="https://eb-hernandez.github.io/earnest-bits-n-bytes/" target="_blank" rel="noopener">🛡️ View Portfolio</a></li>
-        <li><a class="nav-link" href="https://linkedin.com/in/hello-im-ernest" target="_blank" rel="noopener">💼 LinkedIn</a></li>
-        <li><a class="nav-link" href="#contact">📧 Contact</a></li>
+        <li><a class="nav-link" href="#home">🏠 Home</a></li>
+        <li><a class="nav-link" href="https://eb-hernandez.github.io/earnest-bits-n-bytes/">📁 View Portfolio</a></li>
+        <li><a class="nav-link" href="https://linkedin.com/in/hello-im-ernest" target="_blank" rel="noopener">🔗 LinkedIn</a></li>
+        <li><a class="nav-link" href="#contact">✉️ Contact</a></li>
       </ul>
     </aside>
 
@@ -177,16 +169,32 @@
       <div class="container">
         <!-- HERO -->
         <section class="hero" id="home" aria-label="Intro">
-          <h1>Aspiring Information Security Architect</h1>
+          <h1>Aspiring Information Security Architect • AI‑Driven Defender • Systems Thinker</h1>
           <p class="subtitle">BAT, Cybersecurity • St. Philip's College • Class of 2027</p>
-          <span class="ribbon"><p align="center">Defense in Depth • Network &amp; Platform Hardening • Threat‑informed Design</p></span>
+          <span class="ribbon">Defense in Depth • Network &amp; Platform Hardening • Resilient, Threat‑informed Design</span>
 
           <!-- Quick Navigation -->
           <div class="quick-nav" aria-label="Quick navigation">
-            <a class="qbtn" href="#about">🏡 <strong>Home</strong></a>
-            <a class="qbtn" href="https://eb-hernandez.github.io/earnest-bits-n-bytes/" target="_blank" rel="noopener">🛡️ <strong>Labs &amp; Projects</strong></a>
-            <a class="qbtn" href="https://linkedin.com/in/hello-im-ernest" target="_blank" rel="noopener">💼 <strong>Let's Connect</strong></a>
-            <a class="qbtn" href="mailto:hello.im.ernest@gmail.com">📧 <strong>Contact Me</strong></a>
+            <a class="qbtn" href="#about">
+              <span aria-hidden="true">🏡</span>
+              <strong>Home</strong>
+              <span class="sub">About Me</span>
+            </a>
+            <a class="qbtn" href="https://eb-hernandez.github.io/earnest-bits-n-bytes/">
+              <span aria-hidden="true">🛡️</span>
+              <strong>Labs &amp; Projects</strong>
+              <span class="sub">Portfolio</span>
+            </a>
+            <a class="qbtn" href="https://linkedin.com/in/hello-im-ernest" target="_blank" rel="noopener">
+              <span aria-hidden="true">💼</span>
+              <strong>Let’s Connect</strong>
+              <span class="sub">LinkedIn</span>
+            </a>
+            <a class="qbtn" href="mailto:hello.im.ernest@gmail.com">
+              <span aria-hidden="true">📧</span>
+              <strong>Contact Me</strong>
+              <span class="sub">Email</span>
+            </a>
           </div>
         </section>
 
@@ -196,19 +204,22 @@
           <div class="panel grid-2">
             <div>
               <p>
-                I'm Ernest — a cybersecurity student focused on <strong>secure architecture</strong>, <strong>network security</strong>, and <strong>defensive engineering</strong>.
-                I use hands‑on labs and projects to build toward a role in <strong>Information Security Architecture</strong>, emphasizing threat modeling, least privilege, and repeatable, testable controls.
+                I'm Ernest — a cybersecurity student focused on
+                <strong>secure-architecture</strong>, <strong>network security</strong>, and
+                <strong>defensive engineering</strong>. I use hands‑on labs and projects to build toward a role in
+                <strong>Information Security Architecture</strong>, emphasizing threat modeling, least privilege, and
+                repeatable, testable controls.
               </p>
               <ul class="bullets">
-                <li>Interests: Security architecture patterns, Zero Trust, secure SDLC, and platform hardening</li>
-                <li>Current stack: Python, Kali Linux, Bash, JavaScript, network security tooling</li>
-                <li>Clubs &amp; service: Cyber Tigers • Community volunteering</li>
+                <li><strong>Interests:</strong> Security architecture patterns, Zero Trust, secure SDLC, platform hardening</li>
+                <li><strong>Stack:</strong> Python, Kali Linux, Bash, JavaScript, network security tooling</li>
+                <li><strong>Clubs &amp; Service:</strong> Cyber Tigers; Community volunteering</li>
               </ul>
 
               <div class="cta" role="group" aria-label="Primary calls to action">
-                <a class="btn" href="https://eb-hernandez.github.io/earnest-bits-n-bytes/" target="_blank" rel="noopener">🛡️ View Cybersecurity Portfolio</a>
-                <a class="btn secondary" href="https://linkedin.com/in/hello-im-ernest" target="_blank" rel="noopener">💼 Connect on LinkedIn</a>
-                <a class="btn secondary" href="mailto:hello.im.ernest@gmail.com">📧 Email</a>
+                <a class="btn" href="https://eb-hernandez.github.io/earnest-bits-n-bytes/">🛡️ View Cybersecurity Portfolio</a>
+                <a class="btn" href="https://linkedin.com/in/hello-im-ernest" target="_blank" rel="noopener">💼 Connect on LinkedIn</a>
+                <a class="btn" href="mailto:hello.im.ernest@gmail.com">📧 Email</a>
               </div>
 
               <p class="bullets" style="margin-top:8px;">Prefer a quick summary? See highlights below.</p>
@@ -234,8 +245,8 @@
               <li>Clear storytelling for each project: objective → approach → controls → evidence → next steps.</li>
             </ul>
             <div class="cta">
-              <a class="btn" href="https://eb-hernandez.github.io/earnest-bits-n-bytes/" target="_blank" rel="noopener">Explore Portfolio</a>
-              <a class="btn secondary" href="/assets/Ernest_Hernandez_Resume.pdf" target="_blank" rel="noopener">View Resume (PDF)</a>
+              <a class="btn" href="https://eb-hernandez.github.io/earnest-bits-n-bytes/">🛡️ Explore Portfolio</a>
+              <a class="btn" href="/assets/Ernest_Hernandez_Resume.pdf" target="_blank" rel="noopener">🗂️ View Resume (PDF)</a>
             </div>
           </div>
         </section>
@@ -247,7 +258,7 @@
             <p>Open to internships and junior security roles focused on secure architecture, platform hardening, or defensive engineering.</p>
             <div class="cta">
               <a class="btn" href="mailto:hello.im.ernest@gmail.com">📧 Email</a>
-              <a class="btn secondary" href="https://linkedin.com/in/hello-im-ernest" target="_blank" rel="noopener">💼 LinkedIn</a>
+              <a class="btn" href="https://linkedin.com/in/hello-im-ernest" target="_blank" rel="noopener">💼 LinkedIn</a>
             </div>
           </div>
         </section>
