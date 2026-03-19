@@ -10,20 +10,32 @@ header, contacts, project, project h3, project a, header h1, h2, h3, .brand { fo
 header nav, header nav a, header nav ul, section, section h2 { font-family: var(--font-head); }
 section p, project p, contact ul, contact a, footer { font-family: var(--font-head); }
 
-* {
+* {box-sizing: border-box;}
+
+html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
     font-family: var(--font-body);
     line-height: 1.6;
     color: #EDE7E3;
     background-color: #0F1216;
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; 
 }
 
 html { scroll-behavior: smooth; }
+
+.avatar img {
+    width: 128px;
+    height: 168px;
+    border-radius: 14px;            /* circle; change to 14px & adjust size for oblong */
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid #263041;
+    box-shadow: 0 1px 0 rgba(0,0,0,.25);
+    background: #0c1117;
+}
+
+main { padding: 26px 26px 48px; }
 
 /* Header & Navigation */
 header {
