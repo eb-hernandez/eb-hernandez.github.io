@@ -1,4 +1,15 @@
 /* General Styles */
+:root{
+    --font-head: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-body: "Work Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Apply families */
+html, main, body { font-family: var(--font-body); }
+header, contacts, project, project h3, project a, header h1, h2, h3, .brand { font-family: var(--font-head); }
+header nav, header nav a, header nav ul, section, section h2 { font-family: var(--font-head); }
+section p, project p, contact ul, contact a, footer { font-family: var(--font-head); }
+
 * {
     margin: 0;
     padding: 0;
