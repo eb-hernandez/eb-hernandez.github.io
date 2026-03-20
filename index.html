@@ -296,7 +296,8 @@
   <footer>
     <div class="container">
       <span class="footer-mono">
-        v1.0 &nbsp;·&nbsp; Ernest B. Hernandez &nbsp;·&nbsp; Last updated: March 2026
+        <p align="center"><sub>© <span id="year"></span> Ernest B. Hernandez</sub></p>
+        <p align="right"><sub>v1.0 • Last updated: 19 March 2026</sub></p>
       </span>
       <span class="footer-mono" style="color: var(--border);">
         eb-hernandez.github.io
@@ -306,6 +307,9 @@
 
   <!-- ═══ SCRIPTS ══════════════════════════════════════════ -->
   <script>
+    // Keep year current
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
     // ── Scroll Reveal ────────────────────────────────────────
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver(
