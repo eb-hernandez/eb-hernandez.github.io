@@ -417,6 +417,17 @@ h2 {
   font-size: .73rem;
   color: var(--muted);
 }
+.footer-container {
+  display: flex;
+  justify-content: space-between; /* Pushes items to left, center, and right */
+  align-items: center;           /* Vertically centers them */
+  padding: 10px 20px;
+  font-family: monospace;        /* Matches your 'footer-mono' intent */
+}
+
+.footer-left { flex: 1; text-align: left; }
+.footer-center { flex: 1; text-align: center; }
+.footer-right { flex: 1; text-align: right; color: var(--border); }
 
 /* ─── BADGE STRIP ────────────────────────────────────── */
 .badge-strip {
